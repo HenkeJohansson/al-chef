@@ -1,5 +1,5 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="form-container">
   <label for="prompt">Recipe prompt:</label>
   <textarea id="prompt" [(ngModel)]="prompt" name="prompt"></textarea>
-  <button>Generate recipe</button>
+  <button type="submit">Generate recipe</button>
 </form>
