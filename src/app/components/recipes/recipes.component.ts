@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from '../../services/recipe.service';
 import { TRecipe } from '../../types/common';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss'],
 })
