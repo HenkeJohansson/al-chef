@@ -1,11 +1,7 @@
 <div class="app-container">
   <app-header class="header"></app-header>
   <div class="content">
-    <app-form
-      class="form"
-      (onGenerateRecipe)="generateRecipe($event)"
-    ></app-form>
+    <router-outlet></router-outlet>
   </div>
   <app-nav-bar class="nav-bar"></app-nav-bar>
 </div>
-<router-outlet />
