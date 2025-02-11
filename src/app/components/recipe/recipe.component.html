@@ -1,1 +1,15 @@
-<p>recipe works!</p>
+<section class="recipe" ng-if="recipe">
+  <h1>{{ recipe?.name }}</h1>
+  <div class="ingredients">
+    <h3 class="">Ingredients:</h3>
+    <ul>
+      <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient }}</li>
+    </ul>
+  </div>
+  <div class="instructions">
+    <h3>Intructions:</h3>
+    <ol>
+      <li *ngFor="let instruction of recipe?.steps">{{ instruction }}</li>
+    </ol>
+  </div>
+</section>

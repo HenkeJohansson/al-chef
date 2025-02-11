@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Kyckling med ris och grönsaker",
     "ingredients": [
       "2 kycklingfiléer",
@@ -24,6 +25,7 @@
     ]
   },
   {
+    "id": 2,
     "name": "Krämig pastagratäng med köttfärs",
     "ingredients": [
       "300 g pasta (t.ex. penne eller makaroner)",
@@ -51,6 +53,7 @@
     ]
   },
   {
+    "id": 3,
     "name": "Linsgryta med kokosmjölk",
     "ingredients": [
       "2 dl röda linser",

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { TRecipe } from '../types/common';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,15 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {}
 
-  getRecipes(): Observable<any> {
-    return this.http.get<any>(this.recipesUrl);
+  getRecipes(): Observable<TRecipe[]> {
+    return this.http.get<TRecipe[]>(this.recipesUrl);
+  }
+
+  getRecipeById(id: string): Observable<TRecipe | undefined> {
+    return this.http
+      .get<TRecipe[]>(this.recipesUrl)
+      .pipe(
+        map((recipes) => recipes.find((recipe) => recipe.id === Number(id)))
+      );
   }
 }

@@ -1,5 +1,9 @@
 <div class="recipes">
   <ul>
-    <li *ngFor="let recipe of recipes">{{ recipe.name }}</li>
+    <a [routerLink]="['/recipe', recipe.id]" *ngFor="let recipe of recipes">
+      <li>
+        {{ recipe.name }}
+      </li>
+    </a>
   </ul>
 </div>
