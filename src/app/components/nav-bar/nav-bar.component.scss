@@ -1,4 +1,4 @@
-.nav-bar {
+nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -8,10 +8,6 @@
   border-top: 1px solid #ddd;
   backdrop-filter: blur(10px);
   z-index: 1000;
-}
-
-nav {
-  height: 100%;
 
   ul {
     margin: 0;

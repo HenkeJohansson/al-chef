@@ -3,13 +3,17 @@
   <div class="ingredients">
     <h3 class="">Ingredients:</h3>
     <ul>
-      <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient }}</li>
+      <li class="block" *ngFor="let ingredient of recipe?.ingredients">
+        {{ ingredient }}
+      </li>
     </ul>
   </div>
   <div class="instructions">
     <h3>Intructions:</h3>
     <ol>
-      <li *ngFor="let instruction of recipe?.steps">{{ instruction }}</li>
+      <li class="block" *ngFor="let instruction of recipe?.steps">
+        {{ instruction }}
+      </li>
     </ol>
   </div>
 </section>

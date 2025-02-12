@@ -2,7 +2,7 @@
   <ul>
     <a [routerLink]="['/recipe', recipe.id]" *ngFor="let recipe of recipes">
       <li>
-        {{ recipe.name }}
+        <h3>{{ recipe.name }}</h3>
       </li>
     </a>
   </ul>

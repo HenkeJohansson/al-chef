@@ -1,5 +1,8 @@
 <div class="app-container">
   <app-header class="header"></app-header>
+  <div *ngIf="isHomePage" class="hero">
+    <img src="/assets/images/al_hero.webp" alt="AL Chef Hero Image" />
+  </div>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

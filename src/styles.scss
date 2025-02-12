@@ -19,7 +19,12 @@ body {
   font-size: $base-font-size;
   line-height: $base-line-height;
   color: #333;
-  background-color: #d7d7d7;
+  background: rgb(174, 233, 238);
+  background: linear-gradient(
+    138deg,
+    rgba(174, 233, 238, 1) 0%,
+    rgba(148, 233, 197, 1) 100%
+  );
 }
 
 a {
