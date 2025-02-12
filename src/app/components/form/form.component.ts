@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RecipeApiService } from '../../services/recipe-api.service';
 
 @Component({
   selector: 'app-form',
@@ -12,10 +13,23 @@ export class FormComponent {
   @Output() onGenerateRecipe = new EventEmitter<string>();
   prompt: string = '';
 
+  constructor(private recipeApiService: RecipeApiService) {}
+
   onSubmit() {
     if (this.prompt) {
-      console.log('Generate Recipe', this.prompt);
-      this.onGenerateRecipe.emit(this.prompt);
+      this.recipeApiService.generateRecipe(this.prompt).subscribe({
+        next: (response) => {
+          const generatedRecipe = JSON.parse(
+            response.choices[0].message.content
+          );
+          console.log('Recipe generated:', generatedRecipe);
+          this.onGenerateRecipe.emit(response);
+          this.prompt = '';
+        },
+        error: (error) => {
+          console.error('Error generating recipe:', error);
+        },
+      });
     }
   }
 }
