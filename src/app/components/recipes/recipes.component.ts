@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
+import { RecipeStorageService } from '../../services/recipe-storage.service';
 import { TRecipe } from '../../types/common';
 
 @Component({
@@ -14,7 +14,7 @@ import { TRecipe } from '../../types/common';
 export class RecipesComponent implements OnInit {
   recipes: TRecipe[] = [];
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeStorageService) {}
 
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe((data) => {

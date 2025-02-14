@@ -6,7 +6,7 @@ import { TRecipe } from '../types/common';
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeService {
+export class RecipeStorageService {
   private recipesUrl = 'assets/mockRecipes.json';
 
   constructor(private http: HttpClient) {}
@@ -18,8 +18,6 @@ export class RecipeService {
   getRecipeById(id: string): Observable<TRecipe | undefined> {
     return this.http
       .get<TRecipe[]>(this.recipesUrl)
-      .pipe(
-        map((recipes) => recipes.find((recipe) => recipe.id === Number(id)))
-      );
+      .pipe(map((recipes) => recipes.find((recipe) => recipe.id === id)));
   }
 }
