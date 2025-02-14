@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormComponent } from '../../components/form/form.component';
+import { FormComponent } from '../form/form.component';
 import { RecipeApiService } from '../../services/recipe-api.service';
 import { RecipeStorageService } from '../../services/recipe-storage.service';
 import { TOpenAIResponse, TRecipe } from '../../types/common';
+import { RecipeComponent } from '../recipe/recipe.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormComponent],
+  imports: [CommonModule, FormComponent, RecipeComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  recipe?: TRecipe;
+  error: string = '';
+
   constructor(
     private recipeApiService: RecipeApiService,
     private recipeService: RecipeStorageService,
@@ -21,17 +25,24 @@ export class HomeComponent {
   ) {}
 
   generateRecipe(prompt: string) {
-    this.recipeApiService.generateRecipe(prompt).subscribe({
+    console.log('home.component - generateRecipe', { prompt });
+    this.recipeApiService.generateMockRecipe(prompt).subscribe({
       next: (response) => {
-        const content = JSON.parse(
-          response.choices[0].message.content
-        ) as TOpenAIResponse;
-        const recipe: TRecipe = {
+        const content = JSON.parse(response.choices[0].message.content);
+
+        const data: TRecipe = {
           id: Date.now().toString(),
           name: content.title,
           ingredients: content.ingredients,
-          steps: content.instructions,
+          steps: content.steps,
         };
+
+        if (data) {
+          console.log('res', { data });
+          this.recipe = data;
+        } else {
+          this.error = 'Recipe not found';
+        }
 
         // this.recipeService.addRecipe(recipe);
         // this.router.navigate(['/recipe', recipe.id]);

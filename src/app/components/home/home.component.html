@@ -1,3 +1,4 @@
 <div class="home">
+  <app-recipe *ngIf="recipe" [recipe]="recipe"></app-recipe>
   <app-form class="form" (onGenerateRecipe)="generateRecipe($event)"></app-form>
 </div>
