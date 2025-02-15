@@ -12,6 +12,6 @@ export type TOpenAIResponse = {
 };
 
 export type TAiMessage = {
-  role: 'user' | 'system';
+  role: 'system' | 'user' | 'assistant';
   content: string;
 };

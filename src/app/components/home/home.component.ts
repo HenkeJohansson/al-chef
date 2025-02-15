@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FormComponent } from '../form/form.component';
 import { RecipeApiService } from '../../services/recipe-api.service';
 import { RecipeStorageService } from '../../services/recipe-storage.service';
-import { TOpenAIResponse, TRecipe } from '../../types/common';
+import { TRecipe } from '../../types/common';
 import { RecipeComponent } from '../recipe/recipe.component';
 
 @Component({
