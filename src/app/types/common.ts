@@ -10,3 +10,8 @@ export type TOpenAIResponse = {
   ingredients: string[];
   instructions: string[];
 };
+
+export type TAiMessage = {
+  role: 'user' | 'system';
+  content: string;
+};

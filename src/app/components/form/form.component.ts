@@ -18,22 +18,12 @@ export class FormComponent {
   onSubmit() {
     console.log('form.component - onSubmit', { prompt: this.prompt });
     if (this.prompt) {
-      // this.recipeApiService.generateRecipe(this.prompt).subscribe({
-      //   next: (response) => {
-      //     const generatedRecipe = JSON.parse(
-      //       response.choices[0].message.content
-      //     );
-      //     console.log('Recipe generated:', generatedRecipe);
-      //     this.onGenerateRecipe.emit(response);
-      //     this.prompt = '';
-      //   },
-      //   error: (error) => {
-      //     console.error('Error generating recipe:', error);
-      //   },
-      // });
-      this.recipeApiService.generateMockRecipe(this.prompt).subscribe({
+      this.recipeApiService.generateRecipe(this.prompt).subscribe({
         next: (response) => {
-          console.log('Recipe generated:', response);
+          const generatedRecipe = JSON.parse(
+            response.choices[0].message.content
+          );
+          console.log('Recipe generated:', generatedRecipe);
           this.onGenerateRecipe.emit(response);
           this.prompt = '';
         },
@@ -41,6 +31,16 @@ export class FormComponent {
           console.error('Error generating recipe:', error);
         },
       });
+      // this.recipeApiService.generateMockRecipe(this.prompt).subscribe({
+      //   next: (response) => {
+      //     console.log('Recipe generated:', response);
+      //     this.onGenerateRecipe.emit(response);
+      //     this.prompt = '';
+      //   },
+      //   error: (error) => {
+      //     console.error('Error generating recipe:', error);
+      //   },
+      // });
     }
   }
 }

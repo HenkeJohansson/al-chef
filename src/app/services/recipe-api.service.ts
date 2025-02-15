@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from, of } from 'rxjs';
 import OpenAI from 'openai';
 import { environment } from '../../environments/environment';
+import { TAiMessage } from '../types/common';
 
 @Injectable({
   providedIn: 'root',
@@ -12,21 +13,24 @@ export class RecipeApiService {
     apiKey: environment.openaiApiKey,
     dangerouslyAllowBrowser: true,
   });
+  prompts: TAiMessage[] = [
+    {
+      role: 'system',
+      content:
+        'Return recipe in json format with a title that is a string, an array of ingredients that are strings and an array of steps that are strings.',
+    },
+  ];
 
   constructor(private http: HttpClient) {}
 
   generateRecipe(prompt: string): Observable<any> {
+    this.prompts.push({ role: 'user', content: String(prompt) });
+    console.log('Sending messages:', JSON.stringify(this.prompts, null, 2));
+    console.log('WTF', this.prompts);
     return from(
       this.openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
-        messages: [
-          {
-            role: 'system',
-            content:
-              'Return recipe in json format with a title that is a string, an array of ingredients that are strings and an array of steps that are strings.',
-          },
-          { role: 'user', content: prompt },
-        ],
+        messages: this.prompts,
       })
     );
   }

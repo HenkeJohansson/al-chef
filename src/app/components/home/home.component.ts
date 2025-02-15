@@ -26,7 +26,7 @@ export class HomeComponent {
 
   generateRecipe(prompt: string) {
     console.log('home.component - generateRecipe', { prompt });
-    this.recipeApiService.generateMockRecipe(prompt).subscribe({
+    this.recipeApiService.generateRecipe(prompt).subscribe({
       next: (response) => {
         const content = JSON.parse(response.choices[0].message.content);
 
