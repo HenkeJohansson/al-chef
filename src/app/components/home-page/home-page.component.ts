@@ -26,7 +26,6 @@ export class HomePageComponent {
   ) {}
 
   generateRecipe(prompt: string) {
-    console.log('home.component - generateRecipe', { prompt });
     this.recipeApiService.generateRecipe(prompt).subscribe({
       next: (response) => {
         const content = JSON.parse(response.choices[0].message.content);
@@ -44,9 +43,6 @@ export class HomePageComponent {
         } else {
           this.error = 'Recipe not found';
         }
-
-        // this.recipeStorageService.addRecipe(recipe);
-        // this.router.navigate(['/recipe', recipe.id]);
       },
       error: (error) => {
         console.error('Error generating recipe:', error);
@@ -55,7 +51,6 @@ export class HomePageComponent {
   }
 
   saveRecipe() {
-    console.log('home-page.component', { recipe: this.recipe });
     if (this.recipe) {
       this.recipeStorageService.saveRecipe(this.recipe);
     }

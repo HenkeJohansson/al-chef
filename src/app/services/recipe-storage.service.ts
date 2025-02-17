@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TRecipe } from '../types/common';
 
 @Injectable({
@@ -8,7 +8,6 @@ import { TRecipe } from '../types/common';
 })
 export class RecipeStorageService {
   private readonly STORAGE_KEY = 'RESIPES';
-  private recipesUrl = 'assets/mockRecipes.json';
 
   constructor(private http: HttpClient) {}
 
@@ -34,10 +33,6 @@ export class RecipeStorageService {
     const recipes = this.getStoredRecipes();
     recipes.push(recipe);
     this.saveToStorage(recipes);
-    console.group('RecipeStorageService - saveRecipe');
-    console.log({ recipe });
-    console.log({ recipes });
-    console.groupEnd();
     return of(recipe);
   }
 }
