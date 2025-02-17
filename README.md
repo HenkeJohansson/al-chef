@@ -1,59 +1,73 @@
-# AlChef
+# AL Chef 🧑‍🍳
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+An AI-powered recipe generator that creates personalized recipes based on your preferences and available ingredients.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Generate custom recipes using AI
+- Save favorite recipes locally
+- Browse recipe history
+- Responsive mobile-first design
+- iOS-style UI components
 
-```bash
-ng serve
-```
+### Usage
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Enter your desired recipe requirements or ingredients
+Click "Generate Recipe" to create a custom recipe
+Save interesting recipes for later reference
+Browse your saved recipes in the recipe list
 
-## Code scaffolding
+## Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 17+
+- OpenAI API (GPT-3.5 Turbo)
+- TypeScript
+- SCSS
+- LocalStorage for data persistence
 
-```bash
-ng generate component component-name
-```
+## Getting Started
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Prerequisites
 
-```bash
-ng generate --help
-```
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- Angular CLI
 
-## Building
+### Installation
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Clone the repository:
 
 ```bash
-ng test
+git clone https://github.com/yourusername/al-chef.git
+cd al-chef
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+2. Install dependencies:
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+3. Configure environment variables:
 
-## Additional Resources
+- Create a environments.ts file in /environments dir
+- Add your OpenAI API key:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```typescript
+export const environment = {
+  production: false,
+  openaiApiKey: "KEY_HERE",
+};
+```
+
+### Development
+
+```bash
+npm run start
+```
+
+### Building for production
+
+```bash
+ng build --configuration production
+```
