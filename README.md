@@ -12,10 +12,10 @@ An AI-powered recipe generator that creates personalized recipes based on your p
 
 ### Usage
 
-Enter your desired recipe requirements or ingredients
-Click "Generate Recipe" to create a custom recipe
-Save interesting recipes for later reference
-Browse your saved recipes in the recipe list
+- Enter your desired recipe requirements or ingredients
+- Click "Generate Recipe" to create a custom recipe
+- Save interesting recipes for later reference
+- Browse your saved recipes in the recipe list
 
 ## Tech Stack
 
