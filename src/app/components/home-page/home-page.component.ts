@@ -17,6 +17,7 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class HomePageComponent {
   recipe?: TRecipe;
+  isLoading: boolean = false;
   error: string = '';
 
   constructor(
@@ -26,6 +27,7 @@ export class HomePageComponent {
   ) {}
 
   generateRecipe(prompt: string) {
+    this.isLoading = true;
     this.recipeApiService.generateRecipe(prompt).subscribe({
       next: (response) => {
         const content = JSON.parse(response.choices[0].message.content);
@@ -39,6 +41,7 @@ export class HomePageComponent {
 
         if (data) {
           console.log('res', { data });
+          this.isLoading = false;
           this.recipe = data;
         } else {
           this.error = 'Recipe not found';

@@ -1,4 +1,11 @@
 <div class="home">
+  <div class="is-loading-container" *ngIf="isLoading">
+    <img
+      src="assets/images/thinking_chef_1.webp"
+      alt="Loading"
+      *ngIf="isLoading"
+    />
+  </div>
   <app-recipe *ngIf="recipe" [recipe]="recipe"></app-recipe>
   <app-button
     *ngIf="recipe"
