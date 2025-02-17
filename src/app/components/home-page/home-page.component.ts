@@ -6,11 +6,12 @@ import { RecipeApiService } from '../../services/recipe-api.service';
 import { RecipeStorageService } from '../../services/recipe-storage.service';
 import { TRecipe } from '../../types/common';
 import { RecipeComponent } from '../recipe/recipe.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormComponent, RecipeComponent],
+  imports: [CommonModule, FormComponent, RecipeComponent, ButtonComponent],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
@@ -20,7 +21,7 @@ export class HomePageComponent {
 
   constructor(
     private recipeApiService: RecipeApiService,
-    private recipeService: RecipeStorageService,
+    private recipeStorageService: RecipeStorageService,
     private router: Router
   ) {}
 
@@ -44,12 +45,19 @@ export class HomePageComponent {
           this.error = 'Recipe not found';
         }
 
-        // this.recipeService.addRecipe(recipe);
+        // this.recipeStorageService.addRecipe(recipe);
         // this.router.navigate(['/recipe', recipe.id]);
       },
       error: (error) => {
         console.error('Error generating recipe:', error);
       },
     });
+  }
+
+  saveRecipe() {
+    console.log('home-page.component', { recipe: this.recipe });
+    if (this.recipe) {
+      this.recipeStorageService.saveRecipe(this.recipe);
+    }
   }
 }

@@ -1,4 +1,10 @@
 <div class="home">
   <app-recipe *ngIf="recipe" [recipe]="recipe"></app-recipe>
+  <app-button
+    *ngIf="recipe"
+    color="#4898be"
+    label="Save recipe"
+    (btnClick)="saveRecipe()"
+  ></app-button>
   <app-form class="form" (onGenerateRecipe)="generateRecipe($event)"></app-form>
 </div>
