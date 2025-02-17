@@ -8,8 +8,8 @@ import { TRecipe } from '../../types/common';
   selector: 'app-recipes',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.scss'],
+  templateUrl: './recipes-page.component.html',
+  styleUrls: ['./recipes-page.component.scss'],
 })
 export class RecipesComponent implements OnInit {
   recipes: TRecipe[] = [];
